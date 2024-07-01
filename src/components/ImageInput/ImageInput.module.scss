@@ -1,0 +1,64 @@
+.fileBtn{
+    width: 100%;
+    // max-height: 150px;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: rgb(206, 131, 255);
+    border: 2.5px dashed rgb(206, 131, 255);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all .3 ease;
+    padding: 30px;
+
+    .icon{
+        width: 50px;
+        height: 50px;
+        font-size: 38px;
+        color: rgb(206, 131, 255);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 250px;
+        padding: 20px;
+        background-color: rgba(211, 145, 255, 0.752);;
+    }
+}
+
+.selectedFile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(211, 145, 255, 0.035);
+    border: 1px solid rgba(211, 145, 255, 0.552);
+    border-radius: 30px;
+    margin-top: 20px;
+
+    &>p{
+        font-size: 15px;
+        font-weight: 500;
+        margin-left: 15px;
+    }
+
+    &>button{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(206, 131, 255);
+        border: none;
+        border-radius: 28px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover{
+            color: #fff;
+            background-color: rgb(195, 105, 255);
+        }
+    }
+}

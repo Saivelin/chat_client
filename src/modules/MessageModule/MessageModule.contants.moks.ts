@@ -28,7 +28,7 @@ export const people: ProfileType[] = [
 ]
 
 export const messages: MessageType[] = [
-    {id: 1, text: "fdsgfdgdfg", author: people[0]},
+    {id: 1, text: "fdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfg fgdgfdgdfg fdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfg fgdgfdgdfg fdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfgfdsgfdgdfg fgdgfdgdfg", author: people[0]},
     {id: 2, text: "fdsgfdgdfg", author: people[0]},
     {id: 3, text: "fdsgfdgdfg", author: people[0]},
     {id: 4, text: "fdsgfdgdfg", author: people[0]},

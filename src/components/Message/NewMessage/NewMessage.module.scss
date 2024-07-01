@@ -1,0 +1,30 @@
+.wrapper {
+    position: relative;
+    .input {
+        font-family: "Playwrite DE Grund", cursive;
+        padding: 15px;
+        width: 100%;
+        font-size: 18px;
+        border-radius: 18px;
+        box-sizing: border-box;
+
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .btn {
+        position: absolute;
+        top: 13%;
+        right: 10px;
+        cursor: pointer;
+        height: 45px;
+        width: 45px;
+        transition: .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+        &:hover{
+            color: rgb(231, 196, 255);
+        }
+    }
+}

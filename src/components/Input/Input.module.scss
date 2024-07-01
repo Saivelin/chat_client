@@ -1,0 +1,13 @@
+.input {
+    font-family: "Playwrite DE Grund", cursive;
+    padding: 15px;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 18px;
+    box-sizing: border-box;
+
+
+    &:focus {
+        outline: none;
+    }
+}

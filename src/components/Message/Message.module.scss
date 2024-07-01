@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+
+    &_my {
+        justify-content: flex-end;
+    }
+
+    &_other {
+        justify-content: flex-start;
+    }
+
+    .message {
+        padding: 10px;
+        font-size: 18px;
+        text-wrap: stable;
+        word-wrap: break-word;
+        max-width: 100%;
+        max-inline-size: 35ch;
+
+        &_my {
+            background-color: rgb(231, 196, 255);
+            border-radius: 12px 0px 12px 12px;
+        }
+
+        &_other {
+            background-color: rgb(255, 255, 255);
+            border-radius: 0px 12px 12px 12px;
+        }
+    }
+}
