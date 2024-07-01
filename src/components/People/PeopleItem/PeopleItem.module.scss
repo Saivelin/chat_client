@@ -1,0 +1,29 @@
+.photoWrapper {
+    max-width: 70px;
+    max-height: 70px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+
+    .photo {
+        max-width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+    }
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+
+    .activeDate{
+        font-weight: 300;
+    }
+
+    .name {
+        font-weight: 500;
+    }
+}

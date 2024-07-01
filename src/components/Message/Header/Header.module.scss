@@ -1,0 +1,20 @@
+.photoWrapper {
+    max-width: 45px;
+    max-height: 45px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+
+    .photo {
+        max-width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
