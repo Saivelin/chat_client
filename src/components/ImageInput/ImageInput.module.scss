@@ -12,8 +12,12 @@
     border: 2.5px dashed rgb(206, 131, 255);
     border-radius: 20px;
     cursor: pointer;
-    transition: all .3 ease;
+    transition: all .3s ease;
     padding: 30px;
+
+    &:hover{
+        background-color: rgba(206, 131, 255, .1);
+    }
 
     .icon{
         width: 50px;

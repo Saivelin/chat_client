@@ -1,3 +1,4 @@
+import ReduxProvider from "@/redux/redux-provider"
 import "./app.scss"
 
 export const metadata = {
@@ -11,7 +12,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <head>
                 <link rel="icon" type="image/x-icon" href="/favicon_chat.ico"/>
             </head>
-            <body>{children}</body>
+            <body>
+                <ReduxProvider>
+                    {children}
+                </ReduxProvider>
+            </body>
         </html>
     )
 }
