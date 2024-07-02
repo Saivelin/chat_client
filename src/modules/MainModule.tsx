@@ -1,32 +1,51 @@
+'use client'
+
 import Block from '@/components/Block/Block'
 import Container from '@/components/Container/Container'
 import TopProfile from '@/components/Profile/TopProfile/TopProfile'
-import { people, profile } from './MainModule.constants.mock'
 import PeopleItem from '@/components/People/PeopleItem/PeopleItem'
-import styles from "./MainModule.module.scss"
+import styles from './MainModule.module.scss'
+import { useLocalStorage } from 'usehooks-ts'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { useGetChatByMemberIdQuery } from '@/redux/services/chatApi'
+import { ProfileType } from '@/components/Profile/profile.types'
+import ChatList from '@/components/ChatList/ChatList'
 
 const MainModule = () => {
-    return (
-        <Container>
-            <Block>
-                <TopProfile data={profile} />
-                <div className={styles.peopleList}>
-                    {people && people?.length && people?.length > 0
-                        ? people.map(el => (
-                              <PeopleItem
-                                key={el.id}
-                                id={el.id}
-                                name={`${el.name} ${el.surname}`}
-                                photo={el.img}
-                                active={el.active}
-                                activeDate={el.activeDate}
-                              />
-                          ))
-                        : null}
-                </div>
-            </Block>
-        </Container>
-    )
+    const [user, setUser, removeUser] = useLocalStorage<
+        { name: string; photo: string; surname: string; id: number } | ''
+    >('user', '')
+
+    const router = useRouter()
+
+    useEffect(() => {
+        let timer = setTimeout(() => {
+            router.push('/login')
+        }, 3000)
+        if (user && user?.name && user?.id) {
+            clearTimeout(timer)
+        }
+    }, [user])
+
+    if (user && user.name) {
+        return (
+            <Container>
+                <Block>
+                    <TopProfile data={user ? user : { name: 'Name', surname: 'Surname', photo: 'avatar.webp' }} />
+                    {user && user?.id ? <ChatList id={user?.id} /> : <h3 style={{ textAlign: 'center' }}>Loading</h3>}
+                </Block>
+            </Container>
+        )
+    } else {
+        return (
+            <Container>
+                <Block>
+                    <h3 style={{ textAlign: 'center' }}>Loading</h3>
+                </Block>
+            </Container>
+        )
+    }
 }
 
 export default MainModule

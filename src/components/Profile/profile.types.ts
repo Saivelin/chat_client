@@ -1,6 +1,6 @@
 export interface ProfileType {
     id: number,
-    img: string,
+    photo: string,
     name: string,
     surname: string,
     active: boolean,

@@ -12,18 +12,20 @@ const PeopleItem = ({
     name,
     active,
     activeDate,
-    id
+    id,
+    chatId
 }: {
     photo: string
     name: string
     active: boolean
     activeDate: string
     id: number
+    chatId?: number
 }) => {
     const router = useRouter()
 
     const onClick = useCallback(()=>{
-        router.push(`/messages/${id}`)
+        router.push(`/messages/${chatId ? chatId : id}`)
     }, [])
 
     return (
@@ -41,7 +43,7 @@ const PeopleItem = ({
             >
                 <div className={styles.photoWrapper}>
                     <img
-                        src={photo}
+                        src={`${process.env.NEXT_PUBLIC_API_UPLOADS}/${photo}`}
                         alt=''
                         className={styles.photo}
                     />

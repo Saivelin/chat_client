@@ -1,14 +1,16 @@
 .photoWrapper {
-    max-width: 45px;
-    max-height: 45px;
+    width: 45px;
+    height: 45px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 100%;
+    height: 100%;
 
     .photo {
-        max-width: 100%;
+        width: 45px;
+        height: 45px;
         object-fit: cover;
         overflow: hidden;
     }

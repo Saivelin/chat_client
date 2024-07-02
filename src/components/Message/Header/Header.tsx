@@ -13,7 +13,7 @@ const Header = ({ profile }: { profile: ProfileType }) => {
             </Link>
             <div className={styles.photoWrapper}>
                 <img
-                    src={profile.img}
+                    src={`${process.env.NEXT_PUBLIC_API_UPLOADS}/${profile.photo}`}
                     className={styles.photo}
                 />
             </div>

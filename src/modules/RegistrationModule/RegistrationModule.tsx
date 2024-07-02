@@ -9,6 +9,7 @@ import ImageInput from '@/components/ImageInput/ImageInput'
 import { useRegistrationMutation } from '@/redux/services/userApi'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useLocalStorage } from 'usehooks-ts'
 
 const RegistrationModule = () => {
     const [submitForm] = useRegistrationMutation()
@@ -18,6 +19,9 @@ const RegistrationModule = () => {
     const [surname, setSurname] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [photo, setPhoto] = useState<string>('')
+
+    const [token, setToken, removeToken] = useLocalStorage('token', "")
+    const [user, setUser, removeUser] = useLocalStorage('user', "")
 
     const onSubmit = () => {
         if (
@@ -30,9 +34,11 @@ const RegistrationModule = () => {
             photo &&
             photo.length > 0
         ) {
-            submitForm({ name: name, surname: surname, photo: photo, password: password }).then(res => {
+            submitForm({ name: name, surname: surname, photo: photo, password: password }).then((res: any) => {
                 console.log(res)
-                if(res?.data?.id){
+                if(res?.data?.token && res?.data?.user){
+                    setToken(res.data.token)
+                    setUser(res.data.user)
                     router.push("/")
                 }
             })
