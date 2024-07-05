@@ -13,7 +13,10 @@ export const userApi = createApi({
         login: builder.mutation<ProfileType, any>({
             query: (data)=> ({url: `/auth/login`, method: "POST", body: data}),
         }),
+        getAllUsers: builder.query({
+            query: () => ({url: "/users", method: "GET"})
+        })
     })
 })
 
-export const { useRegistrationMutation, useLoginMutation } = userApi
+export const { useRegistrationMutation, useLoginMutation, useGetAllUsersQuery } = userApi

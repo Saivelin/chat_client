@@ -1,5 +1,6 @@
 'use client'
 
+import AddIcon from '@mui/icons-material/Add';
 import { ProfileType } from '@/components/Profile/profile.types'
 import styles from './PeopleItem.module.scss'
 import Block from '@/components/Block/Block'
@@ -13,7 +14,9 @@ const PeopleItem = ({
     active,
     activeDate,
     id,
-    chatId
+    chatId,
+    onClickReplace,
+    addChatButton=false
 }: {
     photo: string
     name: string
@@ -21,11 +24,18 @@ const PeopleItem = ({
     activeDate: string
     id: number
     chatId?: number
+    onClickReplace?: ()=>any
+    addChatButton?: boolean
 }) => {
     const router = useRouter()
 
     const onClick = useCallback(()=>{
-        router.push(`/messages/${chatId ? chatId : id}`)
+        if (onClickReplace){
+            onClickReplace()
+        }
+        else{
+            router.push(`/messages/${chatId ? chatId : id}`)
+        }
     }, [])
 
     return (
@@ -38,7 +48,7 @@ const PeopleItem = ({
                     display: 'flex',
                     columnGap: '30px',
                     alignItems: 'center',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
                 }}
             >
                 <div className={styles.photoWrapper}>
@@ -52,6 +62,9 @@ const PeopleItem = ({
                     <p className={styles.name}>{name}</p>
                     <p className={styles.activeDate}>{activeDate}</p>
                 </div>
+                {addChatButton == true ? 
+                    <div className={styles.addButton}><AddIcon/></div>
+                : null}
             </Block>
         </motion.div>
     )
