@@ -1,4 +1,4 @@
-import { ProfileType } from '@/components/Profile/profile.types'
+import { ProfileType } from '@/entites/profile.types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const userApi = createApi({
@@ -15,8 +15,11 @@ export const userApi = createApi({
         }),
         getAllUsers: builder.query({
             query: () => ({url: "/users", method: "GET"})
+        }),
+        updateLastActive: builder.mutation<{id: number, date: string}, any>({
+            query: (data) => ({url: "/users/online", method: "POST", body: data})
         })
     })
 })
 
-export const { useRegistrationMutation, useLoginMutation, useGetAllUsersQuery } = userApi
+export const { useRegistrationMutation, useLoginMutation, useGetAllUsersQuery, useUpdateLastActiveMutation } = userApi

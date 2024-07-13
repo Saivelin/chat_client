@@ -1,4 +1,4 @@
-import { ProfileType } from '@/components/Profile/profile.types'
+import { ProfileType } from '@/entites/profile.types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const chatApi = createApi({

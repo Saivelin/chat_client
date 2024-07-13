@@ -1,0 +1,42 @@
+.photoWrapper {
+    width: 70px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    aspect-ratio: 1 / 1;
+
+    .photo {
+        width: 70px;
+        height: 70px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        overflow: hidden;
+    }
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+
+    .activeDate{
+        font-weight: 300;
+    }
+
+    .name {
+        font-weight: 500;
+    }
+}
+
+.addButton{
+    background-color: rgb(235, 192, 252);
+    height: 100%;
+    display: flex;
+    border-radius: 7px;
+    color: white;
+
+    margin-left: auto;
+    margin-right: 20px;
+}

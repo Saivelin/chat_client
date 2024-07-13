@@ -1,4 +1,4 @@
-import RegistrationModule from "@/modules/RegistrationModule/RegistrationModule";
+import RegistrationModule from "@/pages/RegistrationModule/RegistrationModule";
 
 export default () => <RegistrationModule/>
 

@@ -1,4 +1,4 @@
-import MessageModule from '@/modules/MessageModule/MessageModule'
+import MessageModule from '@/pages/MessageModule/MessageModule'
 
 const page = ({ params } : {params: any}) => {
     const { id } = params

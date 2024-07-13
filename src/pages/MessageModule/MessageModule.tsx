@@ -1,0 +1,44 @@
+'use client'
+
+import Block from '@/shared/Block/Block'
+import Container from '@/shared/Container/Container'
+import Header from '@/widgets/Message/Header/Header'
+import NewMessage from '@/widgets/Message/NewMessage/NewMessage'
+import { useEffect, useState } from 'react'
+import { ProfileType } from '@/entites/profile.types'
+import { useGetChatByChatIdQuery } from '@/redux/services/chatApi'
+import { useMessagesSocket } from '@/features/useMessagesSocket'
+import { useGetLocalStorageUser } from '@/features/useGetLocalStorageUser'
+import MessageList from '@/widgets/Message/List/MessageList'
+
+const MessageModule = ({ id }: { id: number }) => {
+    const { data: chat } = useGetChatByChatIdQuery(+id)
+    const [person, setPerson] = useState<ProfileType | null>(null)
+    const {user} = useGetLocalStorageUser()
+    const {messages, setMessages, socket} = useMessagesSocket()
+
+    useEffect(() => {
+        if (chat && chat?.length && chat?.length > 0 && chat[0] && user && user?.id) {
+            setPerson(chat[0].members.find((p: ProfileType) => p.id != user?.id))
+            setMessages(chat[0].messages)
+        }
+    }, [chat])
+
+    const sendMessage = (messageText: string) => {
+        if(user && user?.id){
+            socket.emit("newMessage", {chatId: +id, authorId: +user?.id, text: messageText})
+        }
+    }
+
+    return (
+        <Container>
+            <Block>
+                {person ? <Header profile={person} /> : null}
+                <MessageList user={user} messages={messages}/>
+                <NewMessage sendMessage={sendMessage}/>
+            </Block>
+        </Container>
+    )
+}
+
+export default MessageModule
