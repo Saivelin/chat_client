@@ -1,6 +1,6 @@
 'use client'
 
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from '@mui/icons-material/Add'
 import { ProfileType } from '@/entites/profile.types'
 import styles from './PeopleItem.module.scss'
 import Block from '@/shared/Block/Block'
@@ -16,7 +16,7 @@ const PeopleItem = ({
     id,
     chatId,
     onClickReplace,
-    addChatButton=false
+    addChatButton = false
 }: {
     photo: string
     name: string
@@ -24,22 +24,24 @@ const PeopleItem = ({
     activeDate: string
     id: number
     chatId?: number
-    onClickReplace?: ()=>any
+    onClickReplace?: () => any
     addChatButton?: boolean
 }) => {
     const router = useRouter()
 
-    const onClick = useCallback(()=>{
-        if (onClickReplace){
+    const onClick = useCallback(() => {
+        if (onClickReplace) {
             onClickReplace()
-        }
-        else{
+        } else {
             router.push(`/messages/${chatId ? chatId : id}`)
         }
     }, [])
 
     return (
-        <motion.div whileHover={{ scale: .95 }} onClick={onClick}>
+        <motion.div
+            whileHover={{ scale: 0.95 }}
+            onClick={onClick}
+        >
             <Block
                 style={{
                     backgroundColor: 'white',
@@ -48,7 +50,7 @@ const PeopleItem = ({
                     display: 'flex',
                     columnGap: '30px',
                     alignItems: 'center',
-                    cursor: 'pointer',
+                    cursor: 'pointer'
                 }}
             >
                 <div className={styles.photoWrapper}>
@@ -60,11 +62,18 @@ const PeopleItem = ({
                 </div>
                 <div className={styles.info}>
                     <p className={styles.name}>{name}</p>
-                    <p className={styles.activeDate}>{activeDate}</p>
+                    <p
+                        className={styles.activeDate}
+                        style={activeDate == process.env.NEXT_PUBLIC_ACTIVE_USER_STATUS ? { color: 'rgb(18 199 100)' } : {}}
+                    >
+                        {activeDate}
+                    </p>
                 </div>
-                {addChatButton == true ? 
-                    <div className={styles.addButton}><AddIcon/></div>
-                : null}
+                {addChatButton == true ? (
+                    <div className={styles.addButton}>
+                        <AddIcon />
+                    </div>
+                ) : null}
             </Block>
         </motion.div>
     )

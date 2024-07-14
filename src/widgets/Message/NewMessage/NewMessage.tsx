@@ -2,7 +2,8 @@
 
 import SendRoundedIcon from '@mui/icons-material/SendRounded'
 import styles from './NewMessage.module.scss'
-import { useCallback, useEffect, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useState } from 'react'
+import Input from '@/shared/Input/Input'
 
 const NewMessage = ({sendMessage} : {sendMessage: any}) => {
     const [value, setValue] = useState<string>("")
@@ -14,9 +15,9 @@ const NewMessage = ({sendMessage} : {sendMessage: any}) => {
 
     return (
         <div className={styles.wrapper}>
-            <textarea
+            <Input
                 value={value}
-                onChange={(e)=>setValue(e.target.value)}
+                onChange={(e : ChangeEvent<HTMLInputElement>)=>setValue(e.target.value)}
                 className={styles.input}
                 placeholder='Type something...'
                 rows={1}

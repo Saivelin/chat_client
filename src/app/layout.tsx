@@ -1,5 +1,6 @@
 import ReduxProvider from "@/redux/redux-provider"
 import "./app.scss"
+import Logout from "@/widgets/Logout/Logout"
 
 export const metadata = {
     title: 'Chat',
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </head>
             <body>
                 <ReduxProvider>
+                    <Logout/>
                     {children}
                 </ReduxProvider>
             </body>

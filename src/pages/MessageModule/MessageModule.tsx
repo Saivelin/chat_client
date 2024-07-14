@@ -10,6 +10,7 @@ import { useGetChatByChatIdQuery } from '@/redux/services/chatApi'
 import { useMessagesSocket } from '@/features/useMessagesSocket'
 import { useGetLocalStorageUser } from '@/features/useGetLocalStorageUser'
 import MessageList from '@/widgets/Message/List/MessageList'
+import messageSend from "@/features/sendMessage"
 
 const MessageModule = ({ id }: { id: number }) => {
     const { data: chat } = useGetChatByChatIdQuery(+id)
@@ -25,9 +26,7 @@ const MessageModule = ({ id }: { id: number }) => {
     }, [chat])
 
     const sendMessage = (messageText: string) => {
-        if(user && user?.id){
-            socket.emit("newMessage", {chatId: +id, authorId: +user?.id, text: messageText})
-        }
+        messageSend({user, socket, id, messageText})
     }
 
     return (

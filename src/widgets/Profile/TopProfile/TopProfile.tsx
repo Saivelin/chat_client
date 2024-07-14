@@ -9,7 +9,7 @@ const TopProfile = ({data} : {data: {photo: string, name: string, surname: strin
         <div className={styles.photoWrapper}>
             <img src={`${process.env.NEXT_PUBLIC_API_UPLOADS}/${data.photo}`} className={styles.photo}/>
         </div>
-        <Info name={`${data.name} ${data.surname}`} active={true} activeData={"now"}/>
+        <Info name={`${data.name} ${data.surname}`} active={true} activeData={process.env.NEXT_PUBLIC_ACTIVE_USER_STATUS || "active"}/>
     </div>
   )
 }

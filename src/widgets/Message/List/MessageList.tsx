@@ -4,16 +4,23 @@ import { ProfileType } from '@/entites/profile.types'
 import Loading from '@/shared/Loading/Loading'
 import styles from "./MessageList.module.scss"
 import { StorageUserType } from '@/features/useGetLocalStorageUser'
-import { useScrollDown } from '@/features/useScrollDown'
+import { useEffect, useRef } from 'react'
+import { scrollBlockDown } from '@/features/scrollBlockDown'
 
 const MessageList = ({messages, user} : {messages: MessageType[], user?: ProfileType | '' | StorageUserType}) => {
-    const {scrollRef} = useScrollDown()
+    const scrollRef = useRef(null)
+
+    useEffect(()=>{
+        if(scrollRef?.current){
+            scrollBlockDown(scrollRef)
+        }
+    }, [messages])
 
     return (
         <div className={styles.messagesWrapper} ref={scrollRef}>
             {user && user?.id ? (
                 messages &&
-                messages.map((el: any) => {
+                messages.map((el: any, i: number) => {
                     return (
                         <Message
                             messages={el}

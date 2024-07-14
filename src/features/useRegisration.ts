@@ -1,10 +1,11 @@
-import { useRegistrationMutation } from '@/redux/services/userApi'
+import { useRegistrationMutation, useUpdateLastActiveMutation } from '@/redux/services/userApi'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
 export const useRegistration = () => {
     const [submitForm] = useRegistrationMutation()
+    const [setActiveUser] = useUpdateLastActiveMutation()
 
     const [name, setName] = useState<string>('')
     const [surname, setSurname] = useState<string>('')
@@ -32,6 +33,7 @@ export const useRegistration = () => {
                 if (res?.data?.token && res?.data?.user) {
                     setToken(res.data.token)
                     setUser(res.data.user)
+                    setActiveUser({id: res?.data?.user?.id, data: process.env.NEXT_PUBLIC_ACTIVE_USER_STATUS}).then((res)=>{console.log(res)})
                     router.push('/')
                 }
             })

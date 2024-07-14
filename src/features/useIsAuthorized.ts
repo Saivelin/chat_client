@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useLocalStorage } from "usehooks-ts";
 
 export const useIsAuthorized = () => {
-    const [user, setUser, removeUser] = useLocalStorage<
+    const [user] = useLocalStorage<
         { name: string; photo: string; surname: string; id: number } | ''
     >('user', '')
 
@@ -12,7 +12,7 @@ export const useIsAuthorized = () => {
     useEffect(() => {
         let timer = setTimeout(() => {
             router.push('/login')
-        }, 3000)
+        }, 500)
         if (user && user?.name && user?.id) {
             clearTimeout(timer)
         }
