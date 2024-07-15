@@ -20,7 +20,6 @@ const MessageModule = ({ id }: { id: number }) => {
     const {user} = useGetLocalStorageUser()
     const {messages, setMessages, socket} = useMessagesSocket()
     useIsAuthorized()
-    // 
 
     useEffect(() => {
         if (chat && chat?.length && chat?.length > 0 && chat[0] && user && user?.id) {
