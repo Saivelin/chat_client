@@ -1,3 +1,4 @@
+import { MessageType } from '@/entites/Message.type'
 import { ProfileType } from '@/entites/profile.types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
@@ -23,7 +24,11 @@ export const chatApi = createApi({
             query: (data)=> ({url: `/chat`, method: "POST", body: data}),
             invalidatesTags: ["CHAT"],
         }),
+        checkMessage: builder.mutation<MessageType, number>({
+            query: (data)=>({url: "/message/check", method: "POST", body: {id: data}}),
+            invalidatesTags: ["CHAT"]
+        })
     })
 })
 
-export const { useGetChatByMemberIdQuery, useGetChatByChatIdQuery, useCreateChatMutation, useGetAllChatsQuery } = chatApi
+export const { useGetChatByMemberIdQuery, useGetChatByChatIdQuery, useCreateChatMutation, useGetAllChatsQuery, useCheckMessageMutation } = chatApi

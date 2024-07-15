@@ -7,7 +7,7 @@ import { StorageUserType } from '@/features/useGetLocalStorageUser'
 import { useEffect, useRef } from 'react'
 import { scrollBlockDown } from '@/features/scrollBlockDown'
 
-const MessageList = ({messages, user} : {messages: MessageType[], user?: ProfileType | '' | StorageUserType}) => {
+const MessageList = ({messages, user, check} : {messages: MessageType[], user?: ProfileType | '' | StorageUserType, check: any}) => {
     const scrollRef = useRef(null)
 
     useEffect(()=>{
@@ -23,6 +23,7 @@ const MessageList = ({messages, user} : {messages: MessageType[], user?: Profile
                 messages.map((el: any, i: number) => {
                     return (
                         <Message
+                            check={check}
                             messages={el}
                             my={el.authorId == user?.id ? true : false}
                         />

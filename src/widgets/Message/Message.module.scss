@@ -1,31 +1,70 @@
 .wrapper {
     display: flex;
     align-items: center;
+    flex-direction: column;
 
     &_my {
         justify-content: flex-end;
+        align-items: flex-end;
     }
 
     &_other {
         justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .imagesWrapper {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0 0px 0;
+
+        &>img {
+            min-height: 100px;
+            max-height: 300px;
+            max-width: 300px;
+        }
     }
 
     .message {
         padding: 10px;
-        font-size: 18px;
-        text-wrap: stable;
-        word-wrap: break-word;
         max-width: 100%;
-        max-inline-size: 35ch;
+        position: relative;
+
+        .status{
+            color: rgb(158, 120, 184);
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            bottom: 12px;
+        }
+
+        p {
+            font-size: 18px;
+            text-wrap: stable;
+            word-wrap: break-word;
+            max-inline-size: 35ch;
+        }
 
         &_my {
             background-color: rgb(231, 196, 255);
             border-radius: 12px 0px 12px 12px;
+
+            .status{
+                left: -25px;
+            }
+
+            p{
+                text-align: right;
+            }
         }
 
         &_other {
             background-color: rgb(255, 255, 255);
             border-radius: 0px 12px 12px 12px;
+
+            .status{
+                right: -25px;
+            }
         }
     }
 }

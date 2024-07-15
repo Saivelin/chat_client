@@ -19,17 +19,24 @@
         }
     }
 
-    .btn {
+    .btn{
         position: absolute;
-        top: 13%;
-        right: 10px;
         cursor: pointer;
-        height: 45px;
-        width: 45px;
+        height: 30px;
+        width: 30px;
         transition: .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        top: 17%;
 
         &:hover {
             color: rgb(231, 196, 255);
         }
+    }
+
+    .addMessageButton {
+        right: 10px;
+    }
+
+    .addFileButton {
+        right: calc(20px + 30px);
     }
 }

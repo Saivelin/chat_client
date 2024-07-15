@@ -1,5 +1,8 @@
 export interface MessageType {
     id: number,
     text: string,
-    author: any
+    author: any,
+    files?: string[]
+    checked: boolean
+    authorId: number
 }

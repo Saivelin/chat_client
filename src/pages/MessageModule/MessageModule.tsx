@@ -11,6 +11,7 @@ import { useMessagesSocket } from '@/features/useMessagesSocket'
 import { useGetLocalStorageUser } from '@/features/useGetLocalStorageUser'
 import MessageList from '@/widgets/Message/List/MessageList'
 import messageSend from "@/features/sendMessage"
+import checkMessage from '@/features/checkMessage'
 
 const MessageModule = ({ id }: { id: number }) => {
     const { data: chat } = useGetChatByChatIdQuery(+id)
@@ -25,15 +26,20 @@ const MessageModule = ({ id }: { id: number }) => {
         }
     }, [chat])
 
-    const sendMessage = (messageText: string) => {
-        messageSend({user, socket, id, messageText})
+    const sendMessage = (messageText: string, files?: string[]) => {
+        console.log(files)
+        messageSend({user, socket, id, messageText, files: files || []})
+    }
+
+    const check = (messageId: number) => {
+        checkMessage({socket, id: messageId})
     }
 
     return (
         <Container>
             <Block>
                 {person ? <Header profile={person} /> : null}
-                <MessageList user={user} messages={messages}/>
+                <MessageList user={user} messages={messages} check={check}/>
                 <NewMessage sendMessage={sendMessage}/>
             </Block>
         </Container>
