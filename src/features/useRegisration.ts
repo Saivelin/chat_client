@@ -29,11 +29,10 @@ export const useRegistration = () => {
             photo.length > 0
         ) {
             submitForm({ name: name, surname: surname, photo: photo, password: password }).then((res: any) => {
-                console.log(res)
                 if (res?.data?.token && res?.data?.user) {
                     setToken(res.data.token)
                     setUser(res.data.user)
-                    setActiveUser({id: res?.data?.user?.id, data: process.env.NEXT_PUBLIC_ACTIVE_USER_STATUS}).then((res)=>{console.log(res)})
+                    setActiveUser({id: res?.data?.user?.id, data: process.env.NEXT_PUBLIC_ACTIVE_USER_STATUS})
                     router.push('/')
                 }
             })

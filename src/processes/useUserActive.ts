@@ -9,25 +9,23 @@ export const useUserActive = () => {
     const onPageHidden = () => {
         if (user && user?.id) {
             const now = new Date()
-            setActiveUser({ id: user?.id, data: `Был(-а) в сети ${now.toLocaleDateString("ru-RU")} в ${now.getHours()}:${now.getMinutes()}` }).then(res => {
-                console.log(res)
-            })
+            setActiveUser({ id: user?.id, data: `Был(-а) в сети ${now.toLocaleDateString("ru-RU")} в ${now.getHours()}:${now.getMinutes()}` })
         }
     }
 
     const onPageShowed = () => {
         if (user && user?.id) {
-            setActiveUser({ id: user?.id, data: process.env.NEXT_PUBLIC_ACTIVE_USER_STATUS }).then(res => {
-                console.log(res)
-            })
+            setActiveUser({ id: user?.id, data: process.env.NEXT_PUBLIC_ACTIVE_USER_STATUS })
         }
     }
 
     useEffect(() => {
+        window.addEventListener("beforeunload", onPageHidden)
         window.addEventListener("unload", onPageHidden)
         window.addEventListener("pageshow", onPageShowed)
 
         return ()=>{
+            window.addEventListener("beforeunload", onPageHidden)
             window.removeEventListener("unload", onPageHidden)
             window.removeEventListener("pageshow", onPageShowed)
         }

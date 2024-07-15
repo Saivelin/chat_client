@@ -18,11 +18,10 @@ export const useLogin = () => {
     const onSubmit = () => {
         if (name && name.length > 0 && surname && surname.length > 0 && password && password.length > 0) {
             submitForm({ login: `${name} ${surname}`, password: password }).then((res: any) => {
-                console.log(res)
                 if (res?.data?.token && res?.data?.user) {
                     setToken(res.data.token)
                     setUser(res.data.user)
-                    setActiveUser({id: res?.data?.user?.id, data: process.env.NEXT_PUBLIC_ACTIVE_USER_STATUS}).then((res)=>{console.log(res)})
+                    setActiveUser({id: res?.data?.user?.id, data: process.env.NEXT_PUBLIC_ACTIVE_USER_STATUS})
                     router.push('/')
                 }
             })

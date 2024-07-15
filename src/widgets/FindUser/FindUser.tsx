@@ -33,7 +33,6 @@ const FindUser = ({ profile_id, setSearching }: { profile_id: number; setSearchi
                 if(res?.data && res.data?.id){
                     router.push(`/messages/${res.data.id}`)
                 }
-                console.log(res)
             })
         } else {
             console.log(`Chat with this members already exist `)

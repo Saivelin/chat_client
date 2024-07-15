@@ -3,32 +3,29 @@ import { useEffect, useState } from 'react'
 import io from 'socket.io-client'
 import { api_endpoint } from './constants/api'
 
-export const useMessagesSocket = () => {
+export const useChatsSocket = () => {
     const socket = io(api_endpoint)
     const [messages, setMessages] = useState<MessageType[]>([])
+    const [chatsWithMessages, setChatsWithMessages] = useState<number[]>([])
     useEffect(() => {
         let onMessage = (data: any) => {
             setMessages((prevMessages: any) => [...prevMessages, data])
         }
 
-        let onCheck = (data: number) => {
-            let newMessages = [...messages]
-            newMessages.forEach((el)=>{
-                if(el.id == data){
-                    el.checked = true
-                }
-            })
-            setMessages(newMessages)
-        }
-
         socket.on('onMessage', onMessage)
-        socket.on('onCheck', onCheck)
 
         return () => {
             socket.off('onMessage', onMessage)
-            socket.off('onCheck', onCheck)
         }
     }, [socket])
 
-    return {messages, setMessages, socket}
+    useEffect(()=>{
+        messages.map((el)=>{
+            if(el?.chatId){
+                setChatsWithMessages([...chatsWithMessages, el?.chatId])
+            }
+        })
+    }, [messages])
+
+    return {socket, chatsWithMessages}
 }

@@ -5,4 +5,5 @@ export interface MessageType {
     files?: string[]
     checked: boolean
     authorId: number
+    chatId: number
 }

@@ -1,0 +1,21 @@
+.wrapper {
+    position: relative;
+    display: grid;
+    align-items: center;
+    .newMessage {
+        display: flex;
+        position: absolute;
+        right: 15px;
+
+        background-color: rgb(235, 192, 252);
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            font-weight: 600;
+        }
+    }
+}

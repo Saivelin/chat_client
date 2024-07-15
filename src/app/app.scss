@@ -13,4 +13,9 @@
 body {
     background-color: rgb(237, 237, 237);
     // color: rgb(calc(255 - 19), calc(255 - 19), calc(255 - 19));
+
+    --text-color: #000;
+    --main-color: rgb(231, 196, 255);
+    --darkest-main-color: rgb(158, 120, 184);
+    --hover-color: rgb(190, 190, 190);
 }

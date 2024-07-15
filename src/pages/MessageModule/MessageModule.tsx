@@ -27,7 +27,6 @@ const MessageModule = ({ id }: { id: number }) => {
     }, [chat])
 
     const sendMessage = (messageText: string, files?: string[]) => {
-        console.log(files)
         messageSend({user, socket, id, messageText, files: files || []})
     }
 
