@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <head>
                 <link rel="icon" type="image/x-icon" href="/favicon_chat.ico"/>
             </head>
-            <body>
+            <body className="dark">
                 <ReduxProvider>
                     <Logout/>
                     {children}

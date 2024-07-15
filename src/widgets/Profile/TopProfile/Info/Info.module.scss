@@ -1,34 +1,38 @@
-.wrapper {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    align-items: center;
-
-    .container {
+.block {
+    background-color: var(--main-color-light);
+    .wrapper {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        row-gap: 6px;
+        justify-content: space-around;
+        width: 100%;
+        align-items: center;
 
-        .name {
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        .active {
+        .container {
             display: flex;
-            column-gap: 10px;
-            justify-self: flex-start;
+            flex-direction: column;
+            justify-content: space-between;
+            row-gap: 6px;
 
-            .activeState {
-                width: 15px;
-                height: 15px;
-                border-radius: 25px;
+            .name {
+                font-weight: 600;
+                font-size: 18px;
             }
 
-            .activeDate {
-                font-size: 16px;
-                font-weight: 300;
+            .active {
+                display: flex;
+                column-gap: 10px;
+                justify-self: flex-start;
+
+                .activeState {
+                    background-color: var(--active-color);
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 25px;
+                }
+
+                .activeDate {
+                    font-size: 16px;
+                    font-weight: 300;
+                }
             }
         }
     }

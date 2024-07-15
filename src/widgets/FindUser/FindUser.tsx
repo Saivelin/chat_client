@@ -8,6 +8,7 @@ import { useCreateChatMutation, useGetAllChatsQuery } from '@/redux/services/cha
 import ChatItem from '../../shared/ChatItem'
 import PeopleItem from '../People/PeopleItem/PeopleItem'
 import { useRouter } from 'next/navigation'
+import { useAddChat } from '@/features/useAddChat'
 
 const FindUser = ({ profile_id, setSearching }: { profile_id: number; setSearching: any }) => {
     const [search, setSearch] = useState<string | null>(null)
@@ -16,28 +17,29 @@ const FindUser = ({ profile_id, setSearching }: { profile_id: number; setSearchi
     const [createChat] = useCreateChatMutation()
     const [debouncedSearch, setDebouncedSearch] = useDebounceValue<string | null>(null, 500)
     const [searchedUsers, setSearchedUsers] = useState<ProfileType[]>([])
+    const {addChat} = useAddChat(allChats, profile_id)
     const router = useRouter()
 
-    const addChat = (user_id: number) => {
-        let enabled: boolean = true
-        allChats.map((el: any) => {
-            if (
-                el.members.find((member: ProfileType) => member.id == profile_id) &&
-                el.members.find((member: ProfileType) => member.id == user_id)
-            ) {
-                enabled = false
-            }
-        })
-        if (enabled) {
-            createChat({ members: [profile_id, user_id], messages: [] }).then((res : any) => {
-                if(res?.data && res.data?.id){
-                    router.push(`/messages/${res.data.id}`)
-                }
-            })
-        } else {
-            console.log(`Chat with this members already exist `)
-        }
-    }
+    // const addChat = (user_id: number) => {
+    //     let enabled: boolean = true
+    //     allChats.map((el: any) => {
+    //         if (
+    //             el.members.find((member: ProfileType) => member.id == profile_id) &&
+    //             el.members.find((member: ProfileType) => member.id == user_id)
+    //         ) {
+    //             enabled = false
+    //         }
+    //     })
+    //     if (enabled) {
+    //         createChat({ members: [profile_id, user_id], messages: [] }).then((res : any) => {
+    //             if(res?.data && res.data?.id){
+    //                 router.push(`/messages/${res.data.id}`)
+    //             }
+    //         })
+    //     } else {
+    //         console.log(`Chat with this members already exist `)
+    //     }
+    // }
 
     useEffect(() => {
         if (search) {

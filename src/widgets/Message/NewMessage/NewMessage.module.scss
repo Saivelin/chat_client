@@ -26,9 +26,10 @@
         width: 30px;
         transition: .5s cubic-bezier(0.075, 0.82, 0.165, 1);
         top: 17%;
+        color: var(--text-color);
 
         &:hover {
-            color: rgb(231, 196, 255);
+            color: var(--main-color);
         }
     }
 

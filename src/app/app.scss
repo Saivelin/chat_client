@@ -11,11 +11,41 @@
 }
 
 body {
-    background-color: rgb(237, 237, 237);
+    background-color: var(--main-background);
+    color: var(--text-color);
+
     // color: rgb(calc(255 - 19), calc(255 - 19), calc(255 - 19));
 
+    --color-white: #fff;
     --text-color: #000;
     --main-color: rgb(231, 196, 255);
+    --main-color-light: #EBC0FC;
     --darkest-main-color: rgb(158, 120, 184);
     --hover-color: rgb(190, 190, 190);
+    --button-color: rgb(206, 131, 255);
+    --active-color: rgb(25, 247, 126);
+
+    --main-background: rgb(237, 237, 237);
+}
+
+body.dark {
+    background-color: var(--main-background);
+    color: var(--text-color);
+
+    // color: rgb(calc(255 - 19), calc(255 - 19), calc(255 - 19));
+
+    --color-white: #222222;
+    --text-color: #dedede;
+    --main-color: #a65fc3;
+    --main-color-light: #904bac;
+    --darkest-main-color: rgb(158, 120, 184);
+    --hover-color: rgb(83, 83, 83);
+    --button-color: rgb(135, 76, 175);
+    --active-color: rgb(25, 247, 126);
+
+    --main-background: rgb(41, 41, 41);
+
+    a{
+        color: rgb(146, 146, 255);
+    }
 }

@@ -44,7 +44,6 @@ const PeopleItem = ({
         >
             <Block
                 style={{
-                    backgroundColor: 'white',
                     borderRadius: '30px',
                     padding: '10px 8px',
                     display: 'flex',
@@ -52,6 +51,7 @@ const PeopleItem = ({
                     alignItems: 'center',
                     cursor: 'pointer'
                 }}
+                classNames={[styles.block]}
             >
                 <div className={styles.photoWrapper}>
                     <img

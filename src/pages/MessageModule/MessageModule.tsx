@@ -12,12 +12,14 @@ import { useGetLocalStorageUser } from '@/features/useGetLocalStorageUser'
 import MessageList from '@/widgets/Message/List/MessageList'
 import messageSend from "@/features/sendMessage"
 import checkMessage from '@/features/checkMessage'
+import { useIsAuthorized } from '@/features/useIsAuthorized'
 
 const MessageModule = ({ id }: { id: number }) => {
     const { data: chat } = useGetChatByChatIdQuery(+id)
     const [person, setPerson] = useState<ProfileType | null>(null)
     const {user} = useGetLocalStorageUser()
     const {messages, setMessages, socket} = useMessagesSocket()
+    useIsAuthorized()
 
     useEffect(() => {
         if (chat && chat?.length && chat?.length > 0 && chat[0] && user && user?.id) {

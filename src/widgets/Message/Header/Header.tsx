@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 const Header = ({ profile }: { profile: ProfileType }) => {
     return (
-        <Block style={{ background: 'white', display: "flex", columnGap: "12px", alignItems: "center", padding: "10px" }}>
+        <Block style={{ display: "flex", columnGap: "12px", alignItems: "center", padding: "10px" }} classNames={[styles.block]}>
             <Link href={"/"}>
                 <KeyboardArrowLeftOutlinedIcon style={{ cursor: 'pointer' }} />
             </Link>

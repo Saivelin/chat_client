@@ -31,7 +31,7 @@
         position: relative;
 
         .status{
-            color: rgb(158, 120, 184);
+            color: var(--darkest-main-color);
             width: 20px;
             height: 20px;
             position: absolute;
@@ -46,7 +46,7 @@
         }
 
         &_my {
-            background-color: rgb(231, 196, 255);
+            background-color: var(--main-color);
             border-radius: 12px 0px 12px 12px;
 
             .status{
@@ -59,7 +59,7 @@
         }
 
         &_other {
-            background-color: rgb(255, 255, 255);
+            background-color: var(--color-white);
             border-radius: 0px 12px 12px 12px;
 
             .status{

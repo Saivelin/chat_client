@@ -7,7 +7,7 @@
         position: absolute;
         right: 15px;
 
-        background-color: rgb(235, 192, 252);
+        background-color: var(--main-color);
         width: 30px;
         height: 30px;
         border-radius: 30px;
@@ -16,6 +16,7 @@
 
         span {
             font-weight: 600;
+            color: var(--text-color);
         }
     }
 }

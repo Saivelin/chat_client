@@ -5,7 +5,8 @@
     font-size: 18px;
     border-radius: 18px;
     box-sizing: border-box;
-
+    background-color: var(--color-white);
+    color: var(--text-color);
 
     &:focus {
         outline: none;
